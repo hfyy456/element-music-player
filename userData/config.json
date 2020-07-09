@@ -1,0 +1,14 @@
+{
+  "settings": {
+    "username": "default"
+  },
+  "current": {
+    "id": 2,
+    "playList": "local",
+    "url": "music/刘若英 - 后来.flac",
+    "title": "后来",
+    "album": "我等你",
+    "artist": "刘若英",
+    "status":"pause"
+  }
+}
