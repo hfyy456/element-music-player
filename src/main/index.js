@@ -32,10 +32,13 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 600,
+    height: 667,
     useContentSize: true,
-    width: 1000,
-    frame: false
+    width: 1024,
+    frame: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
   startMusicServer(port => {
     mainWindow.loadURL(winURL);

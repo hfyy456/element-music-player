@@ -39,10 +39,10 @@ export default {
 </script>
 <style lang="less" scoped>
 .playList {
-  width: 790px;
+  width: 823px;
   text-align: center;
   color: gray;
-  height: 426px;
+  height: 269px;
   overflow: scroll;
   overflow-x: hidden;
   display: inline-block;

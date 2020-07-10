@@ -41,12 +41,18 @@ body{
   background-color: #636363;
 }
 .el-slider__bar{
-  background-color:#ffffff!important;
+  height:4px!important;
+  background-color:#e83c3c!important;
 }
 .el-slider__button{
-  width: 12px !important;
-  height: 12px !important;
-  border: 2px solid #409EFF!important;
+  width: 8px !important;
+  height: 8px !important;
+  border: 2px solid #e83c3c!important;
+}
+.el-card{
+  border:1px solid #E4E7ED!important;
+  box-shadow: none !important;
+  border-radius: none!important;
 }
 .el-card__body{
   padding:0!important;

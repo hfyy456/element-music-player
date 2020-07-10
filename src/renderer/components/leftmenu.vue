@@ -34,14 +34,19 @@
   }
 </script>
 <style lang="less" scoped>
-.left-container{
+.left-container{ 
   margin: 0;
-  background-color: #fff;
+  background-color: #f6f6f8;
   height: 86.2vh;
-  width: 20%;
-  box-shadow: 1px 1px 1px 1px #c2c2c2;
+  width: 200px;
+  border-right:1px solid #E4E7ED;
   .trees{
-    padding-top: 40px;
+    background-color: #f6f6f8;
+    padding-top: 50px;
   }
+}
+/deep/.el-tree{
+    background-color: #f6f6f8;
+
 }
 </style>

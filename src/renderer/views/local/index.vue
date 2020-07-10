@@ -39,9 +39,12 @@ export default {
 .table {
   z-index: 999;
   position: absolute;
-  left: 20.1%;
-  top: 28px;
-  width: 798px;
+  left: 200px;
+  top: 50px;
+  width: 823px;
+  .clearfix{
+    height:245px;
+  }
 }
 
 </style>

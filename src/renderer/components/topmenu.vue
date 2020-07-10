@@ -52,7 +52,7 @@ export default {
 }
 .top {
   width: 100vw;
-  background-color: #409EFF;
+  background-color: #c62f2f;
   z-index: 999;
   list-style: none;
   margin: 0;
@@ -60,7 +60,7 @@ export default {
   padding: 0;
   top:0;
   left:0;
-  min-height: 27px;
+  min-height: 50px;
   animation:fadenum 1s linear;
   .close{
     font-size:25px;
