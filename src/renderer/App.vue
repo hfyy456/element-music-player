@@ -29,6 +29,7 @@ export default {
 body{
   margin: 0;
 }
+
 .uk-notification-message {
     font-size: 14px;
     text-align: center;
