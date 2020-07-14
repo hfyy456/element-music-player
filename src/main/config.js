@@ -2,19 +2,19 @@ const fs = require('fs')
 const path = require('path')
 const jsmediatags = require('jsmediatags')
 class Config {
-  constructor () {
+  constructor() {
     this.path = path.join('./userData', 'config.json')
     this.config = JSON.parse(fs.readFileSync(this.path))
     this.readLocal()
   }
-  get (key) {
+  get(key) {
     return this.config[key]
   }
-  set (key, value) {
+  set(key, value) {
     this.config[key] = value
     return this.config[key]
   }
-  sortbyKey (arr, key) {
+  sortbyKey(arr, key) {
     if (arr.length > 0) {
       return arr.sort((a, b) => {
         let x = a[key]
@@ -23,7 +23,7 @@ class Config {
       })
     }
   }
-  readLocal () {
+  readLocal() {
     const getTags = (url) => new Promise((resolve, reject) => {
       jsmediatags.read(url, {
         onSuccess: (tag) => {
@@ -49,6 +49,7 @@ class Config {
           item['title'] = tags['title']
           item['artist'] = tags['artist']
           item['album'] = tags['album']
+          item['picture'] = tags['picture']
           playList.push(item)
           this.config['localList'] = playList
         })

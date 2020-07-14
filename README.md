@@ -1,28 +1,35 @@
-# elc
+# Element-Music-Player
 
-> An electron-vue project
+基于Electron + Vue + ElementUI打造的客户端，主要仿造网易云PC端，本地文件方面利用Node端读取文件流推送给Render端完成音乐播放功能。 
 
-#### Build Setup
-
+#### 安装与运行
 ``` bash
 # install dependencies
 npm install
-
 # serve with hot reload at localhost:9080
 npm run dev
-
 # build electron application for production
 npm run build
-
 # run unit & end-to-end tests
 npm test
-
-
 # lint all JS/Vue component files in `src/`
 npm run lint
-
 ```
 
----
+### Todolist
 
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[45a3e22](https://github.com/SimulatedGREG/electron-vue/tree/45a3e224e7bb8fc71909021ccfdcfec0f461f634) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+1. 支持本地音乐文件播放。✔
+2. 桌面歌词显示。❌
+3. 调用网易云API支持在线音乐播放。❌
+4. 定制歌单收藏在线和本地音乐。❌
+5. 各种播放模式(随机、循环)。❌
+
+#### 暂时成果
+
+##### 首页
+
+![alt 属性文本](./srceenshoots/home.jpg)
+
+##### 热搜栏
+
+![alt 属性文本](./srceenshoots/search.jpg)

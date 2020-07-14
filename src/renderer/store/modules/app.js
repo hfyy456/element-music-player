@@ -20,7 +20,7 @@ const mutations = {
   }
 }
 const actions = {
-  getConfig ({ commit }) {
+  getConfig({ commit }) {
     return new Promise(resolve => {
       ipcRenderer.send('config')
       ipcRenderer.on('config-reply', (event, arg) => {
@@ -34,8 +34,24 @@ const actions = {
       })
     })
   },
-  switchMusic ({ commit }, current) {
+  switchMusic({ commit }, current) {
     return new Promise(resolve => {
+      function getPicture(picture, callback) {
+        const imgData = picture.data
+        let base64String = ''
+        for (let i = 0; i < imgData.length; i++) {
+          base64String += String.fromCharCode(imgData[i])
+        }
+        callback(
+          null,
+          `data:${picture.format};base64,${window.btoa(base64String)}`
+        )
+      }
+      console.log(current.picture)
+
+      getPicture(current.picture, (e, url) => {
+        current.picture = url
+      })
       commit('SET_CURRENT', current)
       resolve()
       // mar

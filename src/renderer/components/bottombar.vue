@@ -56,10 +56,7 @@
                 </span>
                 <el-card class="box-card">
                     <span class='informations'>
-                        <el-avatar
-                            shape="square"
-                            src="http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20181206/db4da6974f4247b6bc825bb53fb41ea4.jpeg"
-                        ></el-avatar>
+                        <img src="">
                         <div class="tt">
                             <div class="title">{{this.current.title}}</div>
                             <div class="author">{{this.current.artist}}</div>
