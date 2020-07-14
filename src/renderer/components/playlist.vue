@@ -1,25 +1,27 @@
 <template>
-    <table class="playList">
-        <tr>
-            <th class="index">操作</th>
-            <th class="index"></th>
-            <th class="title">音乐标题</th>
-            <th class="singer">歌手</th>
-            <th class="time">专辑</th>
-        </tr>
-        <tr
-            class="rows"
-            v-for="(item, index) in list"
-            :key="index"
-            @dblclick="play(index,item)"
-        >
-            <td>{{index}}</td>
-            <td>{{index}}</td>
-            <td>{{item.title}}</td>
-            <td>{{item.artist}}</td>
-            <td>{{item.album}}</td>
-        </tr>
-    </table>
+    <div>
+        <table class="playList">
+            <tr>
+                <th class="index"></th>
+                <th class="index">操作</th>
+                <th class="title">音乐标题</th>
+                <th class="singer">歌手</th>
+                <th class="album">专辑</th>
+            </tr>
+            <tr
+                class="rows"
+                v-for="(item, index) in list"
+                :key="index"
+                @dblclick="play(index,item)"
+            >
+                <td>{{index}}</td>
+                <td></td>
+                <td>{{item.title}}</td>
+                <td>{{item.artist}}</td>
+                <td>{{item.album}}</td>
+            </tr>
+        </table>
+    </div>
 </template>
 <script>
 export default {
@@ -43,6 +45,10 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+th {
+    padding: 0;
+    line-height: 30px;
+}
 .playList {
     width: 823px;
     text-align: center;
@@ -56,7 +62,6 @@ export default {
         width: 30px;
         border-left: 1px solid #ebeef5;
         border-bottom: 1px solid #ebeef5;
-        padding: 4px;
         &:hover {
             background-color: #ebeef5;
         }
@@ -66,7 +71,6 @@ export default {
         width: 200px;
         border-left: 1px solid #ebeef5;
         border-bottom: 1px solid #ebeef5;
-        padding: 4px;
         &:hover {
             background-color: #ebeef5;
         }
@@ -74,15 +78,13 @@ export default {
     .title {
         font-size: 14px;
         width: 200px;
-        padding: 4px;
         border-left: 1px solid #ebeef5;
         border-bottom: 1px solid #ebeef5;
         &:hover {
             background-color: #ebeef5;
         }
     }
-    .time {
-        padding: 4px;
+    .album {
         font-size: 14px;
         width: 200px;
         border-left: 1px solid #ebeef5;

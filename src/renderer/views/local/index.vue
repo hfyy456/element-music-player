@@ -41,6 +41,7 @@ export default {
     position: absolute;
     left: 200px;
     top: 50px;
+    background-color: #fafafa;
     width: 823px;
     .clearfix {
         height: 245px;
