@@ -35,3 +35,7 @@ npm run lint
 ##### 热搜栏
 
 ![alt 属性文本](./srceenshoots/search.jpg)
+
+##### 歌词显示
+
+![alt 属性文本](./srceenshoots/search.jpg)
