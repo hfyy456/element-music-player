@@ -11,8 +11,11 @@ export default {
         currentTime: {
             handler() {
                 const second = parseInt(this.currentTime)
-                if (this.lrc[second]) {
-                    this.word = this.lrc[second]
+                const length = this.lrc.length
+                for (var i = 0; i < length; i++) {
+                    if (this.lrc[i].seconds == second) {
+                        this.word = this.lrc[i].content
+                    }
                 }
             },
         },
