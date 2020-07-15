@@ -30,7 +30,7 @@ npm run lint
 
 ##### 首页
 
-![alt 属性文本](./srceenshots/home.jpg)
+![alt 属性文本](./screenshots/home.jpg)
 
 ##### 热搜栏
 
