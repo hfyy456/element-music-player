@@ -6,34 +6,35 @@
                     <span>
                         <i
                             class="player-widget-s iconfont icon-shangyiqu"
-                            @click="last()"
+                            @click="last"
                         ></i>
                     </span>
                     <span>
                         <i
                             v-if="!audioStatus.playing"
                             class="player-widget el-icon-caret-right"
-                            @click="play()"
+                            @click="play"
                         ></i>
                         <i
                             v-else
                             class="player-widget iconfont icon-bofangqi-zanting"
-                            @click="play()"
+                            @click="play"
                         ></i>
                     </span>
                     <span>
                         <i
                             class="player-widget-s iconfont icon-xiayiqu"
-                            @click="next()"
+                            @click="next"
                         ></i>
                     </span>
                     <span>
-                        <span class="time-a">{{this.transTime(this.audioStatus.currentTime)}}</span>
+                        <span class="time-a">{{transTime(audioStatus.currentTime)}}</span>
                         <el-slider
                             v-model="percent"
+                            @click.native="change"
                             class="time-slider"
                         ></el-slider>
-                        <span class="time-b">{{this.transTime(this.audioStatus.duration)}}</span>
+                        <span class="time-b">{{transTime(audioStatus.duration)}}</span>
                     </span>
                     <span class="volume">
                         <span class="volume-a">
@@ -44,22 +45,36 @@
                             <i
                                 v-else
                                 class="iconfont icon-mn_shengyin_fill"
-                                @click="silence()"
+                                @click="silence"
                             ></i>
                         </span>
                         <el-slider
                             v-model="volume"
                             class="volume-slider"
-                            @change="volumeChange()"
+                            @change="volumeChange"
                         ></el-slider>
                     </span>
                 </span>
                 <el-card class="box-card">
                     <span class='informations'>
-                        <img src="">
+                        <div
+                            class='cover-inner'
+                            @mouseenter="showMask"
+                            @mouseleave="showMask"
+                        >
+                            <div
+                                class="mask"
+                                @click="linkToPlayer"
+                                v-show="mask"
+                            ></div>
+                            <img
+                                :src="current.picture"
+                                style="width:45px;height:45px"
+                            >
+                        </div>
                         <div class="tt">
-                            <div class="title">{{this.current.title}}</div>
-                            <div class="author">{{this.current.artist}}</div>
+                            <div class="title">{{current.title}}</div>
+                            <div class="author">{{current.artist}}</div>
                         </div>
                     </span>
                 </el-card>
@@ -67,7 +82,7 @@
                     ref="audio"
                     crossorigin="anonymous"
                     preload
-                    @timeupdate="updateTime()"
+                    @timeupdate="updateTime"
                     src="default"
                 ></audio>
             </div>
@@ -118,6 +133,7 @@ export default {
                 muted: false,
                 loop: 'nomal',
             },
+            mask: false,
         }
     },
     mounted() {
@@ -125,6 +141,12 @@ export default {
     },
 
     methods: {
+        linkToPlayer() {
+            this.$router.push('/player')
+        },
+        showMask() {
+            this.mask = !this.mask
+        },
         silence() {
             this.volume = 0
             this.$refs.audio.volume = this.volume / 100
@@ -149,8 +171,17 @@ export default {
         },
         updateTime() {
             this.currentTime = this.$refs.audio.currentTime
+            this.$store.dispatch('app/updateTime', this.currentTime)
             this.percent =
                 (this.audioStatus.currentTime / this.audioStatus.duration) * 100
+        },
+        change() {
+            this.$nextTick(() => {
+                this.$refs.audio.currentTime =
+                    (this.audioStatus.duration * this.percent) / 100
+                // this.$refs.audio.load()
+                // this.$refs.audio.play()
+            })
         },
         play() {
             if (!this.current.url) {
@@ -253,11 +284,28 @@ export default {
     height: 60px;
     .informations {
         position: relative;
-        top: 5px;
+        top: 7px;
+        left: 5px;
+        .cover-inner {
+            cursor: pointer;
+            height: 45px;
+            width: 45px;
+            position: relative;
+            display: inline-block;
+            .mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 45px;
+                width: 45px;
+                opacity: 0.4;
+                background-color: #999999;
+            }
+        }
         .tt {
             display: inline-block;
             position: relative;
-            top: -7px;
+            top: -10px;
             left: 2px;
             .title {
                 font-size: 12px;
@@ -274,7 +322,7 @@ export default {
     left: 20px;
     .time-slider {
         display: inline-block;
-        width: 30%;
+        width: 40%;
         position: relative;
         left: 30px;
         top: 5px;

@@ -36,6 +36,9 @@ class Config {
     })
     let files = fs.readdirSync('./music')
     var playList = []
+    if(!files){
+      return
+    }
     let length = files.length
     let index = 0
     for (let i = 0; i < length; i++) {

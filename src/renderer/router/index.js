@@ -18,6 +18,11 @@ export default new Router({
       component: () => import('@/views/home/index')
     },
     {
+      path: '/player',
+      name: 'Player',
+      component: () => import('@/views/player/index')
+    },
+    {
       path: '/local',
       name: 'Local',
       component: () => import('@/views/local/index')

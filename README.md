@@ -2,6 +2,8 @@
 
 基于Electron + Vue + ElementUI打造的客户端，主要仿造网易云PC端，本地文件方面利用Node端读取文件流推送给Render端完成音乐播放功能。 
 
+技术支持：https://github.com/whxaxes/boom
+
 #### 安装与运行
 ``` bash
 # install dependencies

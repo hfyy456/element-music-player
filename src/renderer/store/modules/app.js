@@ -3,7 +3,9 @@ const state = {
   currentPlaylist: '',
   username: '',
   localList: '',
-  current: ''
+  current: '',
+  currentTime: 2,
+  lrc: '',
 }
 const mutations = {
   SET_USERNAME: (state, username) => {
@@ -17,7 +19,13 @@ const mutations = {
   },
   SET_CURRENT: (state, current) => {
     state.current = current
-  }
+  },
+  SET_LRC: (state, lrc) => {
+    state.lrc = lrc
+  },
+  SET_CURRENTTIME(state, currentTime) {
+    state.currentTime = currentTime
+  },
 }
 const actions = {
   getConfig({ commit }) {
@@ -28,15 +36,31 @@ const actions = {
         console.log(settings)
         commit('SET_USERNAME', settings['username'])
         commit('SET_LOCALLIST', localList)
-        console.log(typeof localList)
+        // console.log(typeof localList)
         resolve(arg)
         // mark
       })
     })
   },
+  updateTime({ commit }, currentTime) {
+    commit('SET_CURRENTTIME', currentTime)
+  },
+  getLrc({ commit }) {
+    return new Promise(resolve => {
+      ipcRenderer.send('lrc')
+      ipcRenderer.on('lrc-reply', (event, arg) => {
+        commit('SET_LRC', arg)
+        resolve(arg)
+      })
+    })
+
+  },
   switchMusic({ commit }, current) {
     return new Promise(resolve => {
       function getPicture(picture, callback) {
+        if (!picture) {
+          return
+        }
         const imgData = picture.data
         let base64String = ''
         for (let i = 0; i < imgData.length; i++) {
@@ -47,7 +71,7 @@ const actions = {
           `data:${picture.format};base64,${window.btoa(base64String)}`
         )
       }
-      console.log(current.picture)
+      // console.log(current.picture)
 
       getPicture(current.picture, (e, url) => {
         current.picture = url

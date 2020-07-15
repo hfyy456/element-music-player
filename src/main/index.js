@@ -1,6 +1,7 @@
 'use strict'
 import { app, BrowserWindow } from 'electron'
 import config from './config'
+import lrcReader from './utils/lrcReader'
 const ms = require('mediaserver')
 const http = require('http')
 const path = require('path')
@@ -27,7 +28,7 @@ Object.keys(ms.mediaTypes).forEach(ext => {
   }
 })
 config.readLocal()
-function createWindow () {
+function createWindow() {
   /**
    * Initial window options
    */
@@ -35,7 +36,7 @@ function createWindow () {
     height: 667,
     useContentSize: true,
     width: 1024,
-    frame: false,
+    //frame: false,
     webPreferences: {
       nodeIntegration: true
     }
@@ -48,14 +49,14 @@ function createWindow () {
     mainWindow = null;
   })
 }
-function startMusicServer (callback) {
+function startMusicServer(callback) {
   const server = http.createServer(pipeMusic).listen(0, () => {
     callback(server.address().port)
   })
 
   return server
 }
-function pipeMusic (req, res) {
+function pipeMusic(req, res) {
   const musicUrl = decodeURIComponent(req.url)
   const extname = path.extname(musicUrl)
   if (allowKeys.indexOf(extname) < 0) {
@@ -70,7 +71,7 @@ function pipeMusic (req, res) {
 
   ms.pipe(req, res, fileUrl)
 }
-function notFound (res) {
+function notFound(res) {
   res.writeHead(404)
   res.end('not found')
 }
@@ -100,6 +101,13 @@ ipcMain.on('config', (event, arg) => {
   obj['localList'] = config.sortbyKey(obj['localList'], 'id')
   console.log(obj)
   event.sender.send('config-reply', obj)
+})
+ipcMain.on('lrc', (event, arg) => {
+  lrcReader().then(res=>{
+    //console.log(res)
+    event.sender.send('lrc-reply', res)
+  })
+  
 })
 ipcMain.on('current', (event, arg) => {
   let current = config['config']['current']

@@ -36,6 +36,7 @@ export default {
                 url: item.url,
                 title: item.title,
                 album: item.album,
+                picture:item.picture,
                 artist: item.artist,
                 status: 'play',
             }
