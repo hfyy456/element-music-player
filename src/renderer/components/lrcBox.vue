@@ -1,6 +1,18 @@
 <template>
-    <div class="lrc-container">
-        <div>{{word}}</div>
+    <div
+        class="lrc-container"
+        ref='box'
+    >
+        <div>
+            <div
+                v-for="(item) of lrc"
+                ref="item"
+                class="lrc-text"
+                :key="item.seconds"
+            >
+                {{item.content}}
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -14,7 +26,10 @@ export default {
                 const length = this.lrc.length
                 for (var i = 0; i < length; i++) {
                     if (this.lrc[i].seconds == second) {
-                        this.word = this.lrc[i].content
+                        this.$refs.item[i - 1].style.color = 'black'
+                        this.$refs.item[i].style.color = 'red'
+                        const position = this.$refs.box.scrollTop
+                        this.$refs.box.scrollTop = position + 2
                     }
                 }
             },
@@ -40,8 +55,14 @@ export default {
 </script>
 <style lang="less" scoped>
 .lrc-container {
-    height: 400px;
-    width: 300px;
-    background-color: #ffffff;
+    height: 350px;
+    width: 400px;
+    margin-bottom:10px;
+    background-color: #fafafa;
+    overflow: auto;
+    .lrc-text {
+        color:#333333;
+        letter-spacing: 0.2em;
+    }
 }
 </style>
