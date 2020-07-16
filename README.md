@@ -21,7 +21,7 @@ npm run lint
 ### Todolist
 
 1. 支持本地音乐文件播放。✔
-2. 桌面歌词显示。❌
+2. 歌词功能。(50%)❌
 3. 调用网易云API支持在线音乐播放。❌
 4. 定制歌单收藏在线和本地音乐。❌
 5. 各种播放模式(随机、循环)。❌
@@ -30,7 +30,7 @@ npm run lint
 
 ##### 首页
 
-![alt 属性文本](./srceenshoots/home.jpg)
+![alt 属性文本](./screenshots/home.jpg)
 
 ##### 热搜栏
 
