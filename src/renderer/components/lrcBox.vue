@@ -57,11 +57,14 @@ export default {
 .lrc-container {
     height: 350px;
     width: 400px;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     background-color: #fafafa;
     overflow: auto;
     .lrc-text {
-        color:#333333;
+        color: #242424;
+        line-height: 24px;
+        font-weight: 300;
+        font-size: 15px;
         letter-spacing: 0.2em;
     }
 }
