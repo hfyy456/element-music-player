@@ -73,12 +73,13 @@ export default {
 .player-container {
     z-index: 999;
     position: absolute;
-    left: 200px;
+    left: 201px;
     top: 50px;
     background-color: #fafafa;
     width: 823px;
     display: flex;
     justify-content: space-around;
+    height: 558px;
 }
 .right-container {
     padding-top: 20px;
