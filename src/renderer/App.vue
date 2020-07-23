@@ -36,10 +36,10 @@ body {
 }
 ::-webkit-scrollbar {
     width: 7px;
-    background-color: #afafaf;
+    background-color: #fafafa;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #636363;
+    background-color: #e4e7ed;
 }
 .el-slider__bar {
     height: 4px !important;

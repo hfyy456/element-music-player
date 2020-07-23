@@ -27,6 +27,21 @@
                     icon="el-icon-remove"
                 ></el-button>
             </li>
+            <li style="right:100px;">
+                <div
+                    class="user-infor"
+                    @click="openLoginWindow"
+                >
+                    <span>
+                        <el-avatar
+                            size="small"
+                            icon="el-icon-user-solid"
+                        ></el-avatar>
+                    </span>
+                    <span>未登录</span>
+                    <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+            </li>
             <li style="right:0;">
                 <el-button
                     type="text"
@@ -69,10 +84,13 @@ export default {
         handle() {
             this.display ? (this.display = false) : (this.display = true)
         },
+        openLoginWindow() {
+            ipc.send('openLoginWindow')
+        },
     },
 }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .open {
     position: absolute;
     top: 0;
@@ -87,6 +105,21 @@ export default {
 
     100% {
         opacity: 1;
+    }
+}
+.user-infor {
+    margin: 12px;
+    margin-left: 0;
+    > * {
+        color: #e4e7ed;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+    &:hover {
+        > * {
+            cursor: pointer;
+            color: white;
+        }
     }
 }
 .top {

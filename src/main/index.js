@@ -96,6 +96,16 @@ ipcMain.on('minsize', function () {
   console.log('hello')
   mainWindow.minimize()
 })
+ipcMain.on('openLoginWindow', function () {
+  let newwin = new BrowserWindow({
+    width: 800,
+    height: 600,
+    frame: false,
+    parent: mainWindow, //win是主窗口
+  })
+  newwin.loadURL(path.join('file:', __dirname, 'index.html')); //new.html是新开窗口的渲染进程
+  newwin.on('closed', () => { newwin = null })
+})
 ipcMain.on('config', (event, arg) => {
   let obj = config['config']
   obj['localList'] = config.sortbyKey(obj['localList'], 'id')
@@ -103,11 +113,11 @@ ipcMain.on('config', (event, arg) => {
   event.sender.send('config-reply', obj)
 })
 ipcMain.on('lrc', (event, arg) => {
-  lrcReader().then(res=>{
+  lrcReader().then(res => {
     //console.log(res)
     event.sender.send('lrc-reply', res)
   })
-  
+
 })
 ipcMain.on('current', (event, arg) => {
   let current = config['config']['current']

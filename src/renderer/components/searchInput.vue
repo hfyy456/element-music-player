@@ -8,21 +8,24 @@
                 @blur="handleBlur"
             >
         </div>
-        <div
-            class="triangle"
-            v-show="display"
-        ></div>
-        <div
-            class="hot-box"
-            v-show="display"
-        >
-            <div class='hot-inner'>
-                <div class="title">热搜榜</div>
-                <div class="items">
-                    <span class="rank">1</span>
-                    <div class="information">
-                        <div><span class='name'>官方问答</span><span class='hot'>100822</span></div>
-                        <div><span class='desc'>sdasddasd</span></div>
+        <div v-show="display">
+            <div class="triangle"></div>
+            <div class="hot-box">
+                <div
+                    class='hot-inner'
+                    v-loading='loading'
+                >
+                    <div class="title">热搜榜</div>
+                    <div
+                        v-for="(item,index) in hot_items"
+                        class="items"
+                        :key="index"
+                    >
+                        <span class="rank">{{index + 1}}</span>
+                        <div class="information">
+                            <div><span class='name'>{{item.searchWord}}</span><span class='hot'>{{item.score}}</span></div>
+                            <div><span class='desc'>{{item.content}}</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,11 +37,22 @@ export default {
     data() {
         return {
             display: false,
+            hot_items: null,
+            loading: true,
         }
     },
     methods: {
         handleFocus() {
+            let url = 'http://106.13.99.3:3000/search/hot/detail'
             this.display = true
+            this.$postData(url)
+                .then((res) => {
+                    this.loading = false
+                    this.hot_items = res.data
+                })
+                .catch((e) => {
+                    console.log(e)
+                })
         },
         handleBlur() {
             this.display = false
@@ -71,6 +85,7 @@ input::-webkit-input-placeholder {
     width: 400px;
     background-color: #ffffff;
     box-shadow: 1px 1px 1px 1px #cccccc;
+    overflow: auto;
     .hot-inner {
         padding-top: 15px;
         font-weight: 300;
