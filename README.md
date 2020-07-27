@@ -32,10 +32,11 @@ npm run lint
 
 ![alt 属性文本](./screenshots/home.jpg)
 
-##### 热搜栏
-
-![alt 属性文本](./srceenshoots/search.jpg)
-
 ##### 歌词显示
 
-![alt 属性文本](./srceenshoots/search.jpg)
+![alt 属性文本](./srceenshoots/player.jpg)
+
+##### 热搜栏
+
+![alt 属性文本](./srceenshoots/hot_detail.jpg)
+
