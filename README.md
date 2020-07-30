@@ -34,9 +34,9 @@ npm run lint
 
 ##### 歌词显示
 
-![alt 属性文本](./srceenshoots/player.jpg)
+![alt 属性文本](./screenshots/player.jpg)
 
 ##### 热搜栏
 
-![alt 属性文本](./srceenshoots/hot_detail.jpg)
+![alt 属性文本](./screenshots/hot_detail.jpg)
 
