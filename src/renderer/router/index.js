@@ -26,6 +26,11 @@ export default new Router({
       path: '/local',
       name: 'Local',
       component: () => import('@/views/local/index')
+    },
+    {
+      path: '/jstags',
+      name: 'jstags',
+      component: () => import('@/views/tool/jstags')
     }
 
   ]
