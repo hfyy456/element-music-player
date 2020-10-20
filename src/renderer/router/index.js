@@ -29,7 +29,7 @@ export default new Router({
     },
     {
       path: '/jstags',
-      name: 'jstags',
+      name: 'Jstags',
       component: () => import('@/views/tool/jstags')
     }
 
